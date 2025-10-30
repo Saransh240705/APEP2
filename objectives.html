@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objectives - APEP</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #EAF4F4;
+            color: #333;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #A3D2CA;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #055052;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .made-by {
+            font-size: 16px;
+            color: #055052;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content-card {
+            background-color: #FFF;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .content-card h1 {
+            color: #055052;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-align: center;
+            background: linear-gradient(45deg, #055052, #A3D2CA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card h2 {
+            color: #055052;
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #A3D2CA;
+            padding-bottom: 10px;
+        }
+
+        .content-card p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #444;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .back-btn {
+            background: #055052;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #033D3A;
+            transform: translateY(-2px);
+        }
+
+        .objective-intro {
+            background: linear-gradient(135deg, #f0f9f9, #e8f2f2);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #055052;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .objective-intro h2 {
+            color: #055052;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            border: none;
+        }
+
+        .objective-content {
+            background: linear-gradient(135deg, #f8fbfb, #e8f2f2);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #A3D2CA;
+        }
+
+        .highlight-section {
+            background: linear-gradient(135deg, #055052, #A3D2CA);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            color: white;
+        }
+
+        .highlight-section h3 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .highlight-section p {
+            color: #f0f9f9;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #A3D2CA;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .feature-card h4 {
+            color: #055052;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            margin: 0;
+            color: #666;
+            text-align: left;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #e8f2f2, #d4ebeb);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            border: 2px solid #A3D2CA;
+        }
+
+        .conclusion-box h3 {
+            color: #055052;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .conclusion-box p {
+            font-size: 1.15rem;
+            color: #055052;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .blurry-ball {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(163, 210, 202, 0.15);
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .blurry-ball1 {
+            width: 300px;
+            height: 300px;
+            top: 5%;
+            left: -10%;
+        }
+
+        .blurry-ball2 {
+            width: 200px;
+            height: 200px;
+            bottom: 15%;
+            right: -8%;
+        }
+
+        .blurry-ball3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 85%;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 0.5rem;
+            }
+            
+            header img {
+                height: 100px !important;
+                margin-bottom: 10px;
+            }
+            
+            header h1 {
+                font-size: 18px !important;
+                padding: 0 !important;
+                margin: 10px 0 !important;
+            }
+            
+            .header-right {
+                align-items: center;
+                margin-top: 10px;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            .content-card {
+                padding: 20px;
+                margin: 20px 0;
+            }
+            
+            .content-card h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .blurry-ball {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-card {
+                padding: 15px;
+            }
+            
+            .content-card h1 {
+                font-size: 1.8rem;
+            }
+            
+            .objective-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blurry-ball blurry-ball1"></div>
+    <div class="blurry-ball blurry-ball2"></div>
+    <div class="blurry-ball blurry-ball3"></div>
+
+    <header>
+        <img src="https://i.pinimg.com/originals/3b/a0/81/3ba08124334e266d5be7344461c5c125.png" alt="APEP Logo" style="height: 150px; width: auto;">
+        <h1 style="margin: 0; padding: 0 20px; color: #055052; font-size: 24px;">AQUA PODIATRIC EXERCISE PLATFORM</h1>
+        <div class="header-right">
+            <p class="made-by">MADE BY MANISH AND SARANSH</p>
+            <p style="font-size: 20px; margin: 0; color: #333;" id="welcomeMessage">Hi, Guest!</p>
+            <button onclick="logout()" style="background: #055052; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Logout</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-card">
+            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+            
+            <h1>Project Objectives</h1>
+            
+            <div class="objective-intro">
+                <h2>🎯 APEP Mission</h2>
+                <p>Integrating Advanced Hydrotherapy Techniques into Comprehensive Foot Rehabilitation</p>
+            </div>
+
+            <!-- Main Objective Content -->
+            <div class="objective-content">
+                <h2>🌊 Project Overview</h2>
+                <p>This project aims to integrate hydrotherapy techniques into foot rehabilitation to leverage the benefits of water resistance, buoyancy, and hydrostatic pressure to improve recovery. By incorporating muscle stimulator for foot bath that combines electrical stimulation with water therapy helps in toning and strengthening the foot muscles, accelerometer uses to track and analyzing motion, foot corrector apparatus which is a great way to build up the arches of feet, stretch and articulate the toes and correct imbalance up the body into knees, hips, and even back that enabling personalized rehabilitation programs tailored to individual needs. The design will focus specifically on foot rehabilitation, aiming to enhance strength, flexibility, and stability through a supportive yet dynamic environment.</p>
+            </div>
+
+            <!-- Key Components -->
+            <div class="highlight-section">
+                <h3>🔧 Innovative Technology Integration</h3>
+                <p>Combining cutting-edge technology with proven hydrotherapy principles to create the most advanced foot rehabilitation platform available.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4><span class="feature-icon">🌊</span>Hydrotherapy Foundation</h4>
+                    <p>Leveraging water resistance, buoyancy, and hydrostatic pressure to create an optimal healing environment that reduces stress on joints while providing therapeutic benefits.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4><span class="feature-icon">⚡</span>Electrical Stimulation</h4>
+                    <p>Muscle stimulator for foot bath that combines electrical stimulation with water therapy to help tone and strengthen foot muscles effectively.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4><span class="feature-icon">📊</span>Motion Tracking</h4>
+                    <p>Advanced accelerometer technology to track and analyze motion, providing real-time feedback for personalized rehabilitation programs.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4><span class="feature-icon">🦶</span>Foot Correction System</h4>
+                    <p>Foot corrector apparatus designed to build up foot arches, stretch and articulate toes, and correct imbalances throughout the body including knees, hips, and back.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4><span class="feature-icon">🎯</span>Personalized Programs</h4>
+                    <p>Enabling customized rehabilitation programs tailored to individual patient needs, ensuring optimal recovery outcomes for each user.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h4><span class="feature-icon">🏗️</span>Comprehensive Design</h4>
+                    <p>Focused specifically on foot rehabilitation to enhance strength, flexibility, and stability through a supportive yet dynamic environment.</p>
+                </div>
+            </div>
+
+            <!-- Goals and Outcomes -->
+            <div class="conclusion-box">
+                <h3>🎖️ Expected Outcomes</h3>
+                <p>To revolutionize foot rehabilitation by creating an integrated platform that combines the therapeutic benefits of water with advanced technology, providing patients with faster recovery times, improved outcomes, and a more engaging rehabilitation experience.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Check authentication
+        window.onload = function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                window.location.href = 'register.html';
+                return;
+            }
+            
+            document.getElementById('welcomeMessage').textContent = `Hi, ${currentUser.username}!`;
+        };
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'register.html';
+        }
+
+        function goBack() {
+            window.location.href = 'create.html';
+        }
+    </script>
+</body>
+</html>

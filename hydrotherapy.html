@@ -276,6 +276,48 @@
             font-size: 1rem;
         }
 
+        .video-container {
+            text-align: center;
+            margin: 40px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #f0f9f9, #e8f2f2);
+            border-radius: 15px;
+            border-left: 5px solid #055052;
+        }
+
+        .video-container h3 {
+            color: #055052;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .video-player {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: #000;
+        }
+
+        .video-fallback {
+            display: none;
+            padding: 40px;
+            background: #f0f9f9;
+            border: 2px dashed #A3D2CA;
+            border-radius: 12px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .video-caption {
+            margin-top: 15px;
+            font-style: italic;
+            color: #055052;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
         .blurry-ball {
             position: absolute;
             border-radius: 50%;
@@ -303,6 +345,90 @@
             height: 100px;
             top: 60%;
             left: 80%;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem 0.5rem;
+            }
+            
+            header img {
+                height: 100px !important;
+                margin-bottom: 10px;
+            }
+            
+            header h1 {
+                font-size: 18px !important;
+                padding: 0 !important;
+                margin: 10px 0 !important;
+            }
+            
+            .header-right {
+                align-items: center;
+                margin-top: 10px;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            .content-card {
+                padding: 20px;
+                margin: 20px 0;
+            }
+            
+            .content-card h1 {
+                font-size: 2rem;
+            }
+            
+            .components-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .advantages-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .video-container {
+                padding: 20px;
+                margin: 30px 0;
+            }
+            
+            .video-player {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .blurry-ball {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content-card {
+                padding: 15px;
+            }
+            
+            .content-card h1 {
+                font-size: 1.8rem;
+            }
+            
+            .video-container {
+                padding: 15px;
+            }
+            
+            .video-container h3 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -338,6 +464,21 @@
                     <br><small>Please ensure Picture 1.jpg is in the same folder as this HTML file</small>
                 </div>
                 <div class="image-caption">Advanced Hydrotherapy Equipment for Podiatric Rehabilitation</div>
+            </div>
+
+            <!-- Tank Video Section -->
+            <div class="video-container">
+                <h3>🎥 Hydrotherapy Tank in Action</h3>
+                <video class="video-player" controls preload="metadata" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <source src="Tank Video (1).mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-fallback">
+                    🎬 Tank Video (1).mp4 - Hydrotherapy Tank Demonstration
+                    <br><small>Please ensure Tank Video (1).mp4 is in the same folder as this HTML file</small>
+                    <br><em>This video shows the APEP hydrotherapy tank system in operation</em>
+                </div>
+                <div class="video-caption">Watch the APEP Hydrotherapy Tank System in Operation</div>
             </div>
 
             <h2>Key Components of Hydrotherapy</h2>

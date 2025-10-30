@@ -77,6 +77,53 @@
             50% { opacity: 1; }
             100% { opacity: 0.6; }
         }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .logo {
+                height: 80px;
+                margin-bottom: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .logo {
+                height: 60px;
+            }
+            
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
