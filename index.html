@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEP - Aqua Podiatric Exercise Platform</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            background: url('https://i.pinimg.com/originals/3b/a0/81/3ba08124334e266d5be7344461c5c125.png') center/contain no-repeat;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #A3D2CA, #055052);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            color: #A3D2CA;
+        }
+
+        .loading-text {
+            font-size: 1rem;
+            opacity: 0.6;
+            animation: pulse 2s infinite;
+        }
+
+        .manual-nav {
+            margin-top: 3rem;
+            opacity: 0.7;
+        }
+
+        .manual-nav a {
+            color: #A3D2CA;
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #A3D2CA;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .manual-nav a:hover {
+            background: #A3D2CA;
+            color: #1a1a2e;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h1>APEP</h1>
+        <p class="subtitle">Aqua Podiatric Exercise Platform</p>
+        <div class="loading-text" id="loadingText">Checking authentication...</div>
+        
+        <div class="manual-nav" id="manualNav" style="display: none;">
+            <p>Or navigate manually:</p>
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is already logged in
+        function checkAuth() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const loadingText = document.getElementById('loadingText');
+            const manualNav = document.getElementById('manualNav');
+            
+            if (currentUser) {
+                loadingText.textContent = `Welcome back, ${currentUser.username}! Redirecting to dashboard...`;
+                setTimeout(() => {
+                    window.location.href = 'create.html';
+                }, 1500);
+            } else {
+                loadingText.textContent = 'Redirecting to registration...';
+                setTimeout(() => {
+                    window.location.href = 'register.html';
+                }, 2000);
+                
+                // Show manual navigation after 3 seconds
+                setTimeout(() => {
+                    manualNav.style.display = 'block';
+                }, 3000);
+            }
+        }
+
+        // Run auth check when page loads
+        window.onload = checkAuth;
+    </script>
+</body>
+</html>

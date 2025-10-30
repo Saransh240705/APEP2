@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEP - Old Patients</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #EAF4F4;
+            color: #333;
+            overflow-y: auto;
+        }
+
+        header {
+            background-color: #A3D2CA;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #055052;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .made-by {
+            font-size: 16px;
+            color: #055052;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content-card {
+            background-color: #FFF;
+            border-radius: 12px;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .patient-card {
+            border: 1px solid #A3D2CA;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            text-align: left;
+        }
+
+        .patient-card h4 {
+            color: #055052;
+            margin-bottom: 10px;
+        }
+
+        .patient-form {
+            background-color: #FFF;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .patient-form h3 {
+            color: #055052;
+            margin-bottom: 20px;
+        }
+
+        .patient-form input,
+        .patient-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #A3D2CA;
+            font-size: 16px;
+        }
+
+        .patient-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #055052;
+            font-weight: 500;
+        }
+
+        .patient-form button {
+            padding: 12px 18px;
+            background-color: #055052;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .patient-form button:hover {
+            background-color: #033D3A;
+        }
+
+        .treatment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #FFF;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .treatment-table th,
+        .treatment-table td {
+            padding: 12px;
+            border: 1px solid #A3D2CA;
+            text-align: center;
+        }
+
+        .treatment-table th {
+            background-color: #A3D2CA;
+            color: #055052;
+            font-weight: 600;
+        }
+
+        .treatment-table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .treatment-table input {
+            width: 60px;
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .back-btn {
+            background: #055052;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .back-btn:hover {
+            background: #033D3A;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://i.pinimg.com/originals/3b/a0/81/3ba08124334e266d5be7344461c5c125.png" alt="APEP Logo" style="height: 150px; width: auto;">
+        <h1 style="margin: 0; padding: 0 20px; color: #055052; font-size: 24px;">AQUA PODIATRIC EXERCISE PLATFORM</h1>
+        <div class="header-right">
+            <p class="made-by">MADE BY MANISH AND SARANSH</p>
+            <p style="font-size: 20px; margin: 0; color: #333;" id="welcomeMessage">Hi, Guest!</p>
+            <button onclick="logout()" style="background: #055052; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Logout</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-card">
+            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+            <h2>Patient Records</h2>
+            <div id="patients-container">
+                <p>Loading patients...</p>
+            </div>
+            
+            <!-- Sample Patient Form -->
+            <div class="patient-form" id="samplePatientForm" style="display: none;">
+                <h3>Sample Patient Information</h3>
+                <form id="editPatientForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="John Doe" required>
+
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" value="45" min="0" required>
+
+                    <label for="occupation">Occupation:</label>
+                    <input type="text" id="occupation" name="occupation" value="Software Engineer">
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="johndoe@example.com">
+
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" value="+1234567890">
+
+                    <label for="address">Address:</label>
+                    <textarea id="address" name="address">1234 Elm Street, Springfield</textarea>
+
+                    <label for="photo">Upload Photo:</label>
+                    <input type="file" id="photo" name="photo">
+
+                    <button type="button" onclick="updatePatient()">Update Patient</button>
+                    <button type="button" onclick="hideSampleForm()">Cancel</button>
+                </form>
+            </div>
+
+            <!-- Treatment Sessions Table -->
+            <div id="treatmentSessions" style="display: none;">
+                <h3>Treatment Sessions</h3>
+                <table class="treatment-table">
+                    <thead>
+                        <tr>
+                            <th>Days</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Duration</th>
+                            <th>Reps</th>
+                            <th>Seconds/Rep</th>
+                            <th>Sets</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2024-10-01</td>
+                            <td>10:00 AM</td>
+                            <td>1 hour</td>
+                            <td><input type="number" value="10" onchange="updateTreatment(this)"></td>
+                            <td><input type="number" value="10" onchange="updateTreatment(this)"></td>
+                            <td>1</td>
+                            <td>Consultation</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2024-10-05</td>
+                            <td>11:00 AM</td>
+                            <td>1.5 hours</td>
+                            <td><input type="number" value="15" onchange="updateTreatment(this)"></td>
+                            <td><input type="number" value="8" onchange="updateTreatment(this)"></td>
+                            <td>1.2</td>
+                            <td>Follow-up</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>2024-10-10</td>
+                            <td>2:00 PM</td>
+                            <td>1 hour</td>
+                            <td><input type="number" value="20" onchange="updateTreatment(this)"></td>
+                            <td><input type="number" value="12" onchange="updateTreatment(this)"></td>
+                            <td>1.5</td>
+                            <td>Hydrotherapy</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>2024-10-15</td>
+                            <td>3:00 PM</td>
+                            <td>1.5 hours</td>
+                            <td><input type="number" value="25" onchange="updateTreatment(this)"></td>
+                            <td><input type="number" value="15" onchange="updateTreatment(this)"></td>
+                            <td>2</td>
+                            <td>Advanced Therapy</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="back-btn" onclick="hideTreatmentTable()" style="margin-top: 20px;">Close Treatment Sessions</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Check authentication
+        window.onload = function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                window.location.href = 'register.html';
+                return;
+            }
+            
+            document.getElementById('welcomeMessage').textContent = `Hi, ${currentUser.username}!`;
+            loadPatients();
+        };
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'register.html';
+        }
+
+        function goBack() {
+            window.location.href = 'create.html';
+        }
+
+        function loadPatients() {
+            let patients = JSON.parse(localStorage.getItem('patients') || '[]');
+            const container = document.getElementById('patients-container');
+            
+            // Add sample patients if none exist
+            if (patients.length === 0) {
+                const samplePatients = [
+                    {
+                        name: 'John Doe',
+                        age: 45,
+                        gender: 'Male',
+                        phone: '+1234567890',
+                        address: '1234 Elm Street, Springfield',
+                        occupation: 'Software Engineer',
+                        email: 'johndoe@example.com',
+                        createdAt: '2024-10-01T10:00:00.000Z',
+                        medicalHistory: 'Plantar Fasciitis, Previous ankle injury',
+                        treatmentPlan: 'Hydrotherapy sessions, 3x per week'
+                    },
+                    {
+                        name: 'Jane Smith',
+                        age: 38,
+                        gender: 'Female',
+                        phone: '+1987654321',
+                        address: '5678 Oak Avenue, Springfield',
+                        occupation: 'Teacher',
+                        email: 'janesmith@example.com',
+                        createdAt: '2024-09-15T14:30:00.000Z',
+                        medicalHistory: 'Arthritis, Balance issues',
+                        treatmentPlan: 'Range of motion exercises, 2x per week'
+                    },
+                    {
+                        name: 'Robert Johnson',
+                        age: 62,
+                        gender: 'Male',
+                        phone: '+1555123456',
+                        address: '9012 Pine Road, Springfield',
+                        occupation: 'Retired',
+                        email: 'robert.johnson@example.com',
+                        createdAt: '2024-09-20T09:15:00.000Z',
+                        medicalHistory: 'Diabetic neuropathy, Gait abnormalities',
+                        treatmentPlan: 'Balance training, Sensory stimulation'
+                    }
+                ];
+                
+                // Save sample patients and update local array
+                localStorage.setItem('patients', JSON.stringify(samplePatients));
+                patients = samplePatients;
+            }
+            
+            if (patients.length === 0) {
+                container.innerHTML = '<p>No patients found. Add some patients first!</p>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            patients.forEach((patient, index) => {
+                const patientCard = document.createElement('div');
+                patientCard.className = 'patient-card';
+                
+                patientCard.innerHTML = `
+                    <h4>Patient ${index + 1}: ${patient.name}</h4>
+                    <p><strong>Age:</strong> ${patient.age} years</p>
+                    <p><strong>Gender:</strong> ${patient.gender}</p>
+                    <p><strong>Phone:</strong> ${patient.phone}</p>
+                    <p><strong>Email:</strong> ${patient.email || 'Not provided'}</p>
+                    <p><strong>Occupation:</strong> ${patient.occupation || 'Not provided'}</p>
+                    <p><strong>Address:</strong> ${patient.address}</p>
+                    <p><strong>Medical History:</strong> ${patient.medicalHistory || 'No history recorded'}</p>
+                    <p><strong>Treatment Plan:</strong> ${patient.treatmentPlan || 'To be determined'}</p>
+                    <p><strong>Registered:</strong> ${new Date(patient.createdAt).toLocaleDateString()}</p>
+                    <div style="margin-top: 15px;">
+                        <button onclick="showSampleForm()" style="background: #055052; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin-right: 10px;">Edit Info</button>
+                        <button onclick="showTreatmentTable()" style="background: #A3D2CA; color: #055052; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer;">View Treatments</button>
+                    </div>
+                `;
+                
+                container.appendChild(patientCard);
+            });
+        }
+
+        function showSampleForm() {
+            document.getElementById('samplePatientForm').style.display = 'block';
+            document.getElementById('treatmentSessions').style.display = 'none';
+        }
+
+        function hideSampleForm() {
+            document.getElementById('samplePatientForm').style.display = 'none';
+        }
+
+        function showTreatmentTable() {
+            document.getElementById('treatmentSessions').style.display = 'block';
+            document.getElementById('samplePatientForm').style.display = 'none';
+        }
+
+        function hideTreatmentTable() {
+            document.getElementById('treatmentSessions').style.display = 'none';
+        }
+
+        function updatePatient() {
+            const formData = {
+                name: document.getElementById('name').value,
+                age: document.getElementById('age').value,
+                occupation: document.getElementById('occupation').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value
+            };
+            
+            alert('Patient information updated successfully!');
+            hideSampleForm();
+            // In a real application, you would save this to localStorage or send to server
+        }
+
+        function updateTreatment(input) {
+            // Save treatment changes
+            console.log('Treatment updated:', input.value);
+            // In a real application, you would save this to localStorage or send to server
+        }
+    </script>
+</body>
+</html>
