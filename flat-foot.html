@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flat Foot - APEP</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #EAF4F4;
+            color: #333;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #A3D2CA;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #055052;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .made-by {
+            font-size: 16px;
+            color: #055052;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content-card {
+            background-color: #FFF;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .content-card h1 {
+            color: #055052;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-align: center;
+            background: linear-gradient(45deg, #055052, #A3D2CA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card h2 {
+            color: #055052;
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #A3D2CA;
+            padding-bottom: 10px;
+        }
+
+        .content-card h3 {
+            color: #055052;
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-card h4 {
+            color: #055052;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-card p {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #444;
+            text-align: justify;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #f0f9f9, #e8f2f2);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #055052;
+            margin: 20px 0;
+        }
+
+        .intro-box h2 {
+            color: #055052;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            border: none;
+        }
+
+        .intro-box p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #055052;
+            font-weight: 500;
+        }
+
+        .back-btn {
+            background: #055052;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #033D3A;
+            transform: translateY(-2px);
+        }
+
+        .assessment-section {
+            background: linear-gradient(135deg, #f8fbfb, #e8f2f2);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #A3D2CA;
+        }
+
+        .treatment-section {
+            background: linear-gradient(135deg, #f0f9f9, #e8f2f2);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #055052;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .strategy-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #A3D2CA;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .strategy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .strategy-card h4 {
+            color: #055052;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .strategy-icon {
+            font-size: 1.5rem;
+        }
+
+        .sub-strategy {
+            background: #f8fbfb;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #A3D2CA;
+        }
+
+        .sub-strategy h5 {
+            color: #055052;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .apep-benefits-section {
+            background: linear-gradient(135deg, #055052, #A3D2CA);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            color: white;
+        }
+
+        .apep-benefits-section h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .benefit-card h4 {
+            color: white;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .benefit-card p {
+            color: #f0f9f9;
+            margin: 0;
+        }
+
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .assessment-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #A3D2CA;
+        }
+
+        .assessment-card h4 {
+            color: #055052;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #e8f2f2, #d4ebeb);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            border: 2px solid #A3D2CA;
+        }
+
+        .conclusion-box h3 {
+            color: #055052;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .conclusion-box p {
+            font-size: 1.15rem;
+            color: #055052;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .bullet-list {
+            background: #f8fbfb;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .bullet-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .bullet-list li {
+            margin: 10px 0;
+            color: #444;
+        }
+
+        .bullet-list li strong {
+            color: #055052;
+        }
+
+        .number-badge {
+            background: #055052;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        .exercise-detail {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #A3D2CA;
+        }
+
+        .exercise-detail h6 {
+            color: #055052;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .exercise-detail p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .blurry-ball {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(163, 210, 202, 0.15);
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .blurry-ball1 {
+            width: 300px;
+            height: 300px;
+            top: 5%;
+            left: -10%;
+        }
+
+        .blurry-ball2 {
+            width: 200px;
+            height: 200px;
+            bottom: 15%;
+            right: -8%;
+        }
+
+        .blurry-ball3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 85%;
+        }
+
+        @media (max-width: 768px) {
+            .strategy-grid, .benefit-grid, .assessment-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blurry-ball blurry-ball1"></div>
+    <div class="blurry-ball blurry-ball2"></div>
+    <div class="blurry-ball blurry-ball3"></div>
+
+    <header>
+        <img src="https://i.pinimg.com/originals/3b/a0/81/3ba08124334e266d5be7344461c5c125.png" alt="APEP Logo" style="height: 150px; width: auto;">
+        <h1 style="margin: 0; padding: 0 20px; color: #055052; font-size: 24px;">AQUA PODIATRIC EXERCISE PLATFORM</h1>
+        <div class="header-right">
+            <p class="made-by">MADE BY MANISH AND SARANSH</p>
+            <p style="font-size: 20px; margin: 0; color: #333;" id="welcomeMessage">Hi, Guest!</p>
+            <button onclick="logout()" style="background: #055052; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Logout</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-card">
+            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+            
+            <h1>Flat Foot</h1>
+            
+            <div class="intro-box">
+                <h2>🦶 Understanding Flat Foot (Pes Planus)</h2>
+                <p>Flat foot, or pes planus, is characterized by a decreased arch height and can lead to various musculoskeletal issues. Effective management often includes a combination of exercises, orthotics, and, in some cases, surgical intervention. Here's a general outline of physiotherapy management.</p>
+            </div>
+
+            <!-- Assessment Section -->
+            <div class="assessment-section">
+                <h2>🔍 Assessment</h2>
+                
+                <div class="assessment-grid">
+                    <div class="assessment-card">
+                        <h4><span class="strategy-icon">🚶‍♀️</span>Gait Analysis</h4>
+                        <p>Observing walking patterns to identify compensatory movements and abnormal foot mechanics during locomotion.</p>
+                    </div>
+                    
+                    <div class="assessment-card">
+                        <h4><span class="strategy-icon">👤</span>Postural Assessment</h4>
+                        <p>Evaluating alignment and posture to understand how flat foot affects overall body mechanics and postural stability.</p>
+                    </div>
+                    
+                    <div class="assessment-card">
+                        <h4><span class="strategy-icon">📐</span>Range of Motion Tests</h4>
+                        <p>Assessing flexibility in the foot and ankle to determine functional limitations and areas requiring intervention.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treatment Strategies -->
+            <div class="treatment-section">
+                <h2>🎯 Treatment Strategies</h2>
+                
+                <div class="strategy-grid">
+                    <!-- Strengthening Exercises -->
+                    <div class="strategy-card">
+                        <h4><span class="number-badge">1</span><span class="strategy-icon">💪</span>Strengthening Exercises</h4>
+                        
+                        <div class="sub-strategy">
+                            <h5>🦶 Intrinsic Foot Muscles</h5>
+                            <div class="exercise-detail">
+                                <h6>Toe Curls</h6>
+                                <p>Strengthens the small muscles within the foot that support the arch structure.</p>
+                            </div>
+                            <div class="exercise-detail">
+                                <h6>Towel Scrunches</h6>
+                                <p>Improves intrinsic foot muscle strength and coordination through functional movement patterns.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="sub-strategy">
+                            <h5>🦵 Extrinsic Muscles</h5>
+                            <div class="exercise-detail">
+                                <h6>Heel Raises</h6>
+                                <p>Strengthens the posterior tibialis and calf muscles crucial for arch support.</p>
+                            </div>
+                            <div class="exercise-detail">
+                                <h6>Calf Raises</h6>
+                                <p>Builds strength in the gastrocnemius and soleus muscles for better foot stability.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stretching Exercises -->
+                    <div class="strategy-card">
+                        <h4><span class="number-badge">2</span><span class="strategy-icon">🤸‍♀️</span>Stretching Exercises</h4>
+                        
+                        <div class="sub-strategy">
+                            <h5>🦵 Calf Stretches</h5>
+                            <p>Improves flexibility in the gastrocnemius and soleus muscles to reduce tension on the plantar fascia and improve foot mechanics.</p>
+                        </div>
+                        
+                        <div class="sub-strategy">
+                            <h5>🦶 Achilles Tendon Stretches</h5>
+                            <p>Enhances ankle dorsiflexion range of motion, which is often limited in individuals with flat feet.</p>
+                        </div>
+                    </div>
+
+                    <!-- Orthotic Support -->
+                    <div class="strategy-card">
+                        <h4><span class="number-badge">3</span><span class="strategy-icon">👟</span>Orthotic Support</h4>
+                        
+                        <div class="sub-strategy">
+                            <h5>🏥 Custom or Over-the-Counter Arch Supports</h5>
+                            <p>Provides external support to help maintain proper foot alignment and reduce stress on soft tissue structures.</p>
+                        </div>
+                    </div>
+
+                    <!-- Manual Therapy -->
+                    <div class="strategy-card">
+                        <h4><span class="number-badge">4</span><span class="strategy-icon">👐</span>Manual Therapy</h4>
+                        
+                        <div class="sub-strategy">
+                            <h5>🔄 Joint Mobilizations</h5>
+                            <p>Improves foot mechanics by restoring normal joint mobility and addressing restrictions in foot and ankle joints.</p>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="strategy-card">
+                        <h4><span class="number-badge">5</span><span class="strategy-icon">📚</span>Education</h4>
+                        
+                        <div class="sub-strategy">
+                            <h5>👠 Proper Footwear Selection</h5>
+                            <p>Teaching patients how to choose appropriate shoes that provide adequate arch support and stability.</p>
+                        </div>
+                        
+                        <div class="sub-strategy">
+                            <h5>⚡ Activity Modification</h5>
+                            <p>Guidance on modifying activities to reduce stress on the feet while maintaining an active lifestyle.</p>
+                        </div>
+                    </div>
+
+                    <!-- Functional Training -->
+                    <div class="strategy-card">
+                        <h4><span class="number-badge">6</span><span class="strategy-icon">⚖️</span>Functional Training</h4>
+                        
+                        <div class="sub-strategy">
+                            <h5>🤹‍♀️ Balance and Proprioceptive Exercises</h5>
+                            <p>Enhances stability and body awareness to improve functional movement patterns and reduce injury risk.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APEP Benefits -->
+            <div class="apep-benefits-section">
+                <h3>🌟 Benefits of Using APEP (Aqua Podiatric Exercise Platform)</h3>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 30px; color: #f0f9f9;">The Aqua Podiatric Exercise Platform (APEP) offers a unique approach to managing flat foot through the combination of hydrotherapy, electrical stimulation, and dynamic mobilization.</p>
+                
+                <div class="benefit-grid">
+                    <div class="benefit-card">
+                        <h4><span class="number-badge">1</span>🌊 Hydrotherapy Benefits</h4>
+                        <div class="bullet-list" style="background: rgba(255,255,255,0.1); color: #f0f9f9;">
+                            <ul>
+                                <li><strong>Buoyancy:</strong> Reduces stress on joints, making exercises more comfortable and allowing for a greater range of motion.</li>
+                                <li><strong>Resistance:</strong> Water provides natural resistance, enhancing muscle strength and endurance.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <h4><span class="number-badge">2</span>⚡ Electrical Stimulation</h4>
+                        <div class="bullet-list" style="background: rgba(255,255,255,0.1); color: #f0f9f9;">
+                            <ul>
+                                <li><strong>Muscle Activation:</strong> Stimulates muscle contractions, aiding in strengthening the intrinsic and extrinsic foot muscles.</li>
+                                <li><strong>Pain Relief:</strong> Can help reduce pain and inflammation in the affected areas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <h4><span class="number-badge">3</span>🔄 Dynamic Foot Mobilization</h4>
+                        <div class="bullet-list" style="background: rgba(255,255,255,0.1); color: #f0f9f9;">
+                            <ul>
+                                <li><strong>Improved Mobility:</strong> Encourages movement in a controlled environment, enhancing flexibility and joint mobility.</li>
+                                <li><strong>Rehabilitation:</strong> Facilitates gradual progression from passive to active movements, which is crucial for recovery.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <h4><span class="number-badge">4</span>🔗 Comprehensive Therapy</h4>
+                        <div class="bullet-list" style="background: rgba(255,255,255,0.1); color: #f0f9f9;">
+                            <ul>
+                                <li>APEP combines multiple therapeutic modalities, promoting a holistic approach to treatment.</li>
+                                <li>The integration of different modalities may lead to faster recovery and improved outcomes.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <h4><span class="number-badge">5</span>🛡️ Reduced Risk of Injury</h4>
+                        <p>The supportive environment of water minimizes the risk of exacerbating existing conditions or causing new injuries during rehabilitation.</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <h4><span class="number-badge">6</span>🎯 Enhanced Engagement</h4>
+                        <p>The interactive nature of APEP can increase patient motivation and adherence to the rehabilitation program.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="conclusion-box">
+                <h3>✨ Conclusion</h3>
+                <p>Integrating physiotherapy with advanced tools like the APEP can significantly improve the management of flat foot. By addressing strength, flexibility, and pain management in a supportive environment, patients can experience improved function and quality of life. Always consult a healthcare professional to create a personalized treatment plan.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Check authentication
+        window.onload = function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                window.location.href = 'register.html';
+                return;
+            }
+            
+            document.getElementById('welcomeMessage').textContent = `Hi, ${currentUser.username}!`;
+        };
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'register.html';
+        }
+
+        function goBack() {
+            window.location.href = 'create.html';
+        }
+    </script>
+</body>
+</html>

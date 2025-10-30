@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankle ROM - APEP</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #EAF4F4;
+            color: #333;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #A3D2CA;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #055052;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .made-by {
+            font-size: 16px;
+            color: #055052;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content-card {
+            background-color: #FFF;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .content-card h1 {
+            color: #055052;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-align: center;
+            background: linear-gradient(45deg, #055052, #A3D2CA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card h2 {
+            color: #055052;
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #A3D2CA;
+            padding-bottom: 10px;
+        }
+
+        .content-card h3 {
+            color: #055052;
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-card h4 {
+            color: #055052;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-card p {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #444;
+            text-align: justify;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #f0f9f9, #e8f2f2);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #055052;
+            margin: 20px 0;
+        }
+
+        .intro-box h2 {
+            color: #055052;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            border: none;
+        }
+
+        .intro-box p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #055052;
+            font-weight: 500;
+        }
+
+        .back-btn {
+            background: #055052;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #033D3A;
+            transform: translateY(-2px);
+        }
+
+        .exercise-section {
+            background: linear-gradient(135deg, #f8fbfb, #e8f2f2);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #A3D2CA;
+        }
+
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .exercise-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #A3D2CA;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .exercise-card h4 {
+            color: #055052;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exercise-icon {
+            font-size: 1.5rem;
+        }
+
+        .movement-detail {
+            background: #f8fbfb;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #A3D2CA;
+        }
+
+        .movement-detail h5 {
+            color: #055052;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .comparison-section {
+            background: linear-gradient(135deg, #f0f9f9, #e8f2f2);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #055052;
+        }
+
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .advantage-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #055052;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .advantage-card h4 {
+            color: #055052;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sub-advantage {
+            background: #f8fbfb;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #A3D2CA;
+        }
+
+        .sub-advantage h5 {
+            color: #055052;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .vs-header {
+            text-align: center;
+            background: linear-gradient(135deg, #055052, #A3D2CA);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .vs-header h2 {
+            color: white;
+            font-size: 2rem;
+            margin: 0;
+            border: none;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #e8f2f2, #d4ebeb);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            border: 2px solid #A3D2CA;
+        }
+
+        .conclusion-box h3 {
+            color: #055052;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .conclusion-box p {
+            font-size: 1.15rem;
+            color: #055052;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .number-badge {
+            background: #055052;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        .benefit-highlight {
+            background: linear-gradient(135deg, rgba(5, 80, 82, 0.1), rgba(163, 210, 202, 0.1));
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #A3D2CA;
+        }
+
+        .benefit-highlight h5 {
+            color: #055052;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .bullet-points {
+            background: #f8fbfb;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .bullet-points ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .bullet-points li {
+            margin: 10px 0;
+            color: #444;
+        }
+
+        .bullet-points li strong {
+            color: #055052;
+        }
+
+        .blurry-ball {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(163, 210, 202, 0.15);
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .blurry-ball1 {
+            width: 300px;
+            height: 300px;
+            top: 5%;
+            left: -10%;
+        }
+
+        .blurry-ball2 {
+            width: 200px;
+            height: 200px;
+            bottom: 15%;
+            right: -8%;
+        }
+
+        .blurry-ball3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 85%;
+        }
+
+        @media (max-width: 768px) {
+            .exercise-grid, .advantage-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blurry-ball blurry-ball1"></div>
+    <div class="blurry-ball blurry-ball2"></div>
+    <div class="blurry-ball blurry-ball3"></div>
+
+    <header>
+        <img src="https://i.pinimg.com/originals/3b/a0/81/3ba08124334e266d5be7344461c5c125.png" alt="APEP Logo" style="height: 150px; width: auto;">
+        <h1 style="margin: 0; padding: 0 20px; color: #055052; font-size: 24px;">AQUA PODIATRIC EXERCISE PLATFORM</h1>
+        <div class="header-right">
+            <p class="made-by">MADE BY MANISH AND SARANSH</p>
+            <p style="font-size: 20px; margin: 0; color: #333;" id="welcomeMessage">Hi, Guest!</p>
+            <button onclick="logout()" style="background: #055052; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Logout</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-card">
+            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+            
+            <h1>Ankle ROM Exercises</h1>
+            
+            <div class="intro-box">
+                <h2>🦵 Understanding Ankle ROM Exercises</h2>
+                <p>Ankle ROM exercises are a fundamental part of rehabilitation for individuals recovering from injury, surgery, or conditions affecting the ankle. The goal of these exercises is to restore flexibility, mobility, and strength in the ankle joint, improving its range of motion.</p>
+            </div>
+
+            <!-- Common ROM Exercises -->
+            <div class="exercise-section">
+                <h2>🎯 Common Physiotherapy Ankle ROM Exercises</h2>
+                
+                <div class="exercise-grid">
+                    <!-- Dorsiflexion and Plantarflexion -->
+                    <div class="exercise-card">
+                        <h4><span class="number-badge">1</span><span class="exercise-icon">↕️</span>Dorsiflexion and Plantarflexion</h4>
+                        
+                        <div class="movement-detail">
+                            <h5>⬆️ Dorsiflexion</h5>
+                            <p>Moving the foot upwards, bringing the toes toward the shin. This movement increases ankle flexibility and strengthens the anterior tibialis muscle.</p>
+                        </div>
+                        
+                        <div class="movement-detail">
+                            <h5>⬇️ Plantarflexion</h5>
+                            <p>Pointing the toes downward, away from the shin. This motion strengthens the calf muscles and improves posterior ankle mobility.</p>
+                        </div>
+                    </div>
+
+                    <!-- Inversion and Eversion -->
+                    <div class="exercise-card">
+                        <h4><span class="number-badge">2</span><span class="exercise-icon">↔️</span>Inversion and Eversion</h4>
+                        
+                        <div class="movement-detail">
+                            <h5>↩️ Inversion</h5>
+                            <p>Turning the sole of the foot inward, towards the other foot. This movement targets the medial ankle muscles and improves subtalar joint mobility.</p>
+                        </div>
+                        
+                        <div class="movement-detail">
+                            <h5>↪️ Eversion</h5>
+                            <p>Turning the sole outward, away from the other foot. This motion strengthens the lateral ankle stabilizers and enhances balance.</p>
+                        </div>
+                    </div>
+
+                    <!-- Ankle Circles -->
+                    <div class="exercise-card">
+                        <h4><span class="number-badge">3</span><span class="exercise-icon">🔄</span>Ankle Circles</h4>
+                        <p>Moving the foot in circular motions, both clockwise and counterclockwise, to promote mobility in all directions. This comprehensive movement pattern helps restore full range of motion and coordinates multiple muscle groups simultaneously.</p>
+                    </div>
+
+                    <!-- Alphabet Exercise -->
+                    <div class="exercise-card">
+                        <h4><span class="number-badge">4</span><span class="exercise-icon">🔤</span>Alphabet Exercise</h4>
+                        <p>Using the toes to "write" the alphabet in the air, helping to engage and stretch the ankle muscles in multiple directions. This functional exercise improves coordination, proprioception, and range of motion through varied movement patterns.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APEP vs Traditional -->
+            <div class="vs-header">
+                <h2>🆚 APEP vs. Traditional ROM Exercises</h2>
+                <p style="margin: 10px 0 0 0; font-size: 1.2rem; color: #f0f9f9;">The Aqua Podiatric Exercise Platform (APEP) provides several advantages over traditional ROM exercises, particularly for ankle rehabilitation.</p>
+            </div>
+
+            <div class="comparison-section">
+                <h3>🌟 How APEP Benefits Ankle ROM Exercises</h3>
+                <p>APEP utilizes hydraulics and the unique properties of water to assist and resist ankle movements in a controlled and therapeutic manner. Here's how APEP benefits ankle ROM exercises compared to traditional methods:</p>
+                
+                <div class="advantage-grid">
+                    <!-- Hydraulics -->
+                    <div class="advantage-card">
+                        <h4><span class="number-badge">1</span><span class="exercise-icon">⚙️</span>Hydraulics for Controlled Assistance and Resistance</h4>
+                        
+                        <div class="sub-advantage">
+                            <h5>🤝 Assistance</h5>
+                            <p>APEP's hydraulic system provides controlled assistance during exercises like dorsiflexion, plantarflexion, inversion, and eversion. This is particularly beneficial for patients with limited strength or mobility, as the machine can support movement while reducing strain on joints.</p>
+                        </div>
+                        
+                        <div class="sub-advantage">
+                            <h5>💪 Resistance</h5>
+                            <p>APEP also offers resistance in a gradual, controlled manner. Unlike traditional ROM exercises where resistance may come from bands or weights, hydraulic resistance allows for smooth, adjustable opposition that helps strengthen muscles and ligaments around the ankle.</p>
+                        </div>
+                    </div>
+
+                    <!-- Water-Based Environment -->
+                    <div class="advantage-card">
+                        <h4><span class="number-badge">2</span><span class="exercise-icon">🌊</span>Water-Based Environment</h4>
+                        
+                        <div class="benefit-highlight">
+                            <h5>🛡️ Reduced Load on Joints</h5>
+                            <p>Exercising in water reduces the load and pressure on the ankle joint, making movement less painful and more accessible for individuals recovering from injury or surgery. The buoyancy of water supports the body, helping patients perform ROM exercises with less impact on the ankle.</p>
+                        </div>
+                        
+                        <div class="benefit-highlight">
+                            <h5>🔄 Increased Resistance</h5>
+                            <p>Water naturally provides resistance to movement, which increases as the patient moves faster or with more force. This dynamic resistance helps to build strength while enhancing ROM without overloading the joint.</p>
+                        </div>
+                        
+                        <div class="benefit-highlight">
+                            <h5>🌡️ Warmth and Relaxation</h5>
+                            <p>Warm water can enhance blood circulation and relax muscles, making it easier to perform ROM exercises. This also reduces muscle stiffness and promotes healing.</p>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Foot Mobilization -->
+                    <div class="advantage-card">
+                        <h4><span class="number-badge">3</span><span class="exercise-icon">🔄</span>Dynamic Foot Mobilization</h4>
+                        
+                        <div class="bullet-points">
+                            <ul>
+                                <li>APEP integrates dynamic foot mobilization techniques, allowing for manual or semi-automated mobilization of the foot and ankle joints.</li>
+                                <li>This is particularly effective for improving joint flexibility and restoring natural movement patterns in the ankle.</li>
+                                <li>Dynamic mobilization in APEP, combined with the water environment, allows for a deeper range of motion and a smoother recovery process.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Customization and Feedback -->
+                    <div class="advantage-card">
+                        <h4><span class="number-badge">4</span><span class="exercise-icon">⚙️</span>Customization and Feedback</h4>
+                        
+                        <div class="bullet-points">
+                            <ul>
+                                <li><strong>Personalized Settings:</strong> APEP's hydraulic system and water environment can be tailored to the individual's specific needs.</li>
+                                <li><strong>Adjustable Parameters:</strong> Resistance, speed, and movement patterns can be adjusted based on the patient's progress.</li>
+                                <li><strong>Real-time Monitoring:</strong> Some APEP systems may offer real-time feedback, helping physiotherapists monitor patient progress and adjust programs as needed.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Stabilizing Muscles -->
+                    <div class="advantage-card">
+                        <h4><span class="number-badge">5</span><span class="exercise-icon">⚖️</span>Engagement of Stabilizing Muscles</h4>
+                        
+                        <div class="bullet-points">
+                            <ul>
+                                <li><strong>Proprioception Enhancement:</strong> In the water tank, the instability of water and controlled hydraulic resistance engage stabilizing muscles around the ankle.</li>
+                                <li><strong>Balance Improvement:</strong> This helps improve proprioception (awareness of joint position), which is often lost or diminished after ankle injury.</li>
+                                <li><strong>Injury Prevention:</strong> Strengthening these stabilizing muscles is essential for preventing further injuries and improving balance and coordination.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Low-Risk Environment -->
+                    <div class="advantage-card">
+                        <h4><span class="number-badge">6</span><span class="exercise-icon">🛡️</span>Low-Risk, High-Reward Environment</h4>
+                        
+                        <div class="bullet-points">
+                            <ul>
+                                <li><strong>Reduced Injury Risk:</strong> Water and hydraulic assistance reduce the risk of injury during exercise, allowing patients to push themselves further in rehabilitation.</li>
+                                <li><strong>Comfort Enhancement:</strong> Traditional ROM exercises are often limited by patient discomfort or pain, whereas APEP provides a safer, more comfortable environment.</li>
+                                <li><strong>Accelerated Progress:</strong> Patients can work on regaining full range of motion without worrying about overstraining the ankle.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="conclusion-box">
+                <h3>✨ Conclusion</h3>
+                <p>The APEP system offers significant advantages over traditional ROM exercises by combining hydraulic assistance and resistance with the supportive properties of water. This approach provides a controlled, low-impact environment that not only restores ankle mobility but also strengthens surrounding muscles, improves proprioception, and accelerates the rehabilitation process. Whether it's for post-injury recovery or chronic ankle issues, APEP's unique combination of water and hydraulics creates a more effective, personalized, and safer path to full ankle rehabilitation.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Check authentication
+        window.onload = function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                window.location.href = 'register.html';
+                return;
+            }
+            
+            document.getElementById('welcomeMessage').textContent = `Hi, ${currentUser.username}!`;
+        };
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'register.html';
+        }
+
+        function goBack() {
+            window.location.href = 'create.html';
+        }
+    </script>
+</body>
+</html>

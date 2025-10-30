@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEP Principles - APEP</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #EAF4F4;
+            color: #333;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #A3D2CA;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #055052;
+        }
+
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .made-by {
+            font-size: 16px;
+            color: #055052;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content-card {
+            background-color: #FFF;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .content-card h1 {
+            color: #055052;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-align: center;
+            background: linear-gradient(45deg, #055052, #A3D2CA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card h2 {
+            color: #055052;
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #A3D2CA;
+            padding-bottom: 10px;
+        }
+
+        .content-card h3 {
+            color: #055052;
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content-card h4 {
+            color: #055052;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-card p {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #444;
+            text-align: justify;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #f0f9f9, #e8f2f2);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #055052;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .intro-box h2 {
+            color: #055052;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            border: none;
+        }
+
+        .intro-box p {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #055052;
+            font-weight: 500;
+        }
+
+        .back-btn {
+            background: #055052;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #033D3A;
+            transform: translateY(-2px);
+        }
+
+        .principle-section {
+            background: linear-gradient(135deg, #f8fbfb, #e8f2f2);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #A3D2CA;
+        }
+
+        .principle-number {
+            background: #055052;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+
+        .principle-title {
+            display: inline-block;
+            color: #055052;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .sub-principle {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #A3D2CA;
+        }
+
+        .sub-principle h4 {
+            color: #055052;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #A3D2CA;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h4 {
+            color: #055052;
+            margin-bottom: 10px;
+        }
+
+        .innovation-section {
+            background: linear-gradient(135deg, #055052, #A3D2CA);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .innovation-section h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .innovation-section p {
+            font-size: 1.2rem;
+            color: #f0f9f9;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #e8f2f2, #d4ebeb);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            border: 2px solid #A3D2CA;
+        }
+
+        .conclusion-box h3 {
+            color: #055052;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .conclusion-box p {
+            font-size: 1.15rem;
+            color: #055052;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .bullet-points {
+            background: #f8fbfb;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .bullet-points ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .bullet-points li {
+            margin: 10px 0;
+            color: #444;
+        }
+
+        .bullet-points li strong {
+            color: #055052;
+        }
+
+        .blurry-ball {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(163, 210, 202, 0.15);
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .blurry-ball1 {
+            width: 300px;
+            height: 300px;
+            top: 5%;
+            left: -10%;
+        }
+
+        .blurry-ball2 {
+            width: 200px;
+            height: 200px;
+            bottom: 15%;
+            right: -8%;
+        }
+
+        .blurry-ball3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 85%;
+        }
+    </style>
+</head>
+<body>
+    <div class="blurry-ball blurry-ball1"></div>
+    <div class="blurry-ball blurry-ball2"></div>
+    <div class="blurry-ball blurry-ball3"></div>
+
+    <header>
+        <img src="https://i.pinimg.com/originals/3b/a0/81/3ba08124334e266d5be7344461c5c125.png" alt="APEP Logo" style="height: 150px; width: auto;">
+        <h1 style="margin: 0; padding: 0 20px; color: #055052; font-size: 24px;">AQUA PODIATRIC EXERCISE PLATFORM</h1>
+        <div class="header-right">
+            <p class="made-by">MADE BY MANISH AND SARANSH</p>
+            <p style="font-size: 20px; margin: 0; color: #333;" id="welcomeMessage">Hi, Guest!</p>
+            <button onclick="logout()" style="background: #055052; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin-top: 5px;">Logout</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-card">
+            <button class="back-btn" onclick="goBack()">← Back to Dashboard</button>
+            
+            <h1>APEP Principles</h1>
+            
+            <div class="intro-box">
+                <h2>Aqua Podiatric Exercise Platform</h2>
+                <p>The Aqua Podiatric Exercise Platform (APEP) is an advanced physiotherapy tool that combines multiple principles to aid in ankle and foot rehabilitation.</p>
+            </div>
+
+            <!-- Principle 1: Hydrotherapy -->
+            <div class="principle-section">
+                <span class="principle-number">1</span>
+                <h3 class="principle-title">Hydrotherapy Principle</h3>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🌊 Water Tank</h4>
+                        <p>The APEP incorporates a hydrotherapy tank where the buoyancy of water reduces stress on the joints and muscles, making movements easier and less painful. This buoyancy is critical for allowing patients to perform exercises without excessive strain, especially during recovery from injury or surgery.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>🌡️ Thermostat and Temperature Control</h4>
+                        <p>The water in the tank is kept at an optimal temperature by a built-in thermostat, which can be adjusted to meet the specific therapeutic needs of the patient. Warm water increases blood flow, relaxes muscles, and helps reduce inflammation.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>📊 Thermometer</h4>
+                        <p>This component ensures that the water temperature is accurately monitored, guaranteeing that the desired therapeutic range is maintained for effective treatment.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>🌀 Water Propeller</h4>
+                        <p>A water propeller generates gentle currents within the tank, adding an element of dynamic resistance. This simulates natural water movements, engaging muscles more effectively during exercises. It allows the therapist to control the intensity of resistance, promoting muscle activation and recovery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Principle 2: Hydraulic Mobility System -->
+            <div class="principle-section">
+                <span class="principle-number">2</span>
+                <h3 class="principle-title">Hydraulic Mobility System</h3>
+                
+                <p>The APEP features four hydraulic systems that facilitate precise and controlled movements of the ankle and foot. The hydraulics provide both assistance and resistance during motion, which is a key innovation in rehabilitation technology:</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>↔️ Inversion and Eversion</h4>
+                        <p>These hydraulic systems control lateral movements of the foot, promoting joint flexibility, strengthening the muscles that support ankle stability, and restoring proper movement patterns.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>↕️ Plantar Flexion and Dorsiflexion</h4>
+                        <p>Hydraulics also allow for upward (dorsiflexion) and downward (plantar flexion) movements, which are essential for improving ankle mechanics and increasing range of motion.</p>
+                    </div>
+                </div>
+                
+                <div class="sub-principle">
+                    <h4>🔄 Assistance and Resistance</h4>
+                    <p>The hydraulics not only assist patients by guiding them through correct movements but also offer resistance, which is crucial for strengthening muscles. This dual functionality ensures that patients can progress from assisted movements to more challenging resistance-based exercises as their condition improves.</p>
+                </div>
+            </div>
+
+            <!-- Principle 3: Biomechanical Precision -->
+            <div class="principle-section">
+                <span class="principle-number">3</span>
+                <h3 class="principle-title">Biomechanical Precision</h3>
+                
+                <div class="bullet-points">
+                    <ul>
+                        <li><strong>Customizable Rehabilitation:</strong> The APEP is designed to adapt to the specific biomechanical needs of each patient, offering a customizable rehabilitation process.</li>
+                        <li><strong>Precise Control:</strong> By allowing precise control over movement angles and resistance levels, the platform ensures that rehabilitation exercises target the exact muscles and joints that require attention.</li>
+                        <li><strong>Safe, Controlled Movement:</strong> The ability to fine-tune the range of motion and resistance ensures that exercises remain within safe limits, reducing the risk of overstraining or injuring the foot and ankle during recovery.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Principle 4: Future Therapeutic Feedback -->
+            <div class="principle-section">
+                <span class="principle-number">4</span>
+                <h3 class="principle-title">Future Therapeutic Feedback and Customization</h3>
+                
+                <div class="sub-principle">
+                    <h4>💻 Digital Control Interface</h4>
+                    <p>In future, the user or therapist can control the movements of the foot mobilizer through a digital interface. This allows for the customization of therapy sessions, adjusting the angle, intensity, and type of movements according to the patient's progress and needs. Real-time feedback enables tracking and adapting treatment protocols, ensuring optimal outcomes.</p>
+                </div>
+            </div>
+
+            <!-- Principle 5: Rehabilitation and Pain Management -->
+            <div class="principle-section">
+                <span class="principle-number">5</span>
+                <h3 class="principle-title">Rehabilitation and Pain Management</h3>
+                
+                <p>By combining hydrotherapy, hydraulics, and electrical stimulation (Faradic bath), the APEP is a holistic platform for not just physical rehabilitation but also pain relief. The warm water helps reduce inflammation and promote relaxation, while the resistance training strengthens muscles and restores joint function.</p>
+            </div>
+
+            <!-- Additional Principles 6-15 -->
+            <div class="principle-section">
+                <span class="principle-number">6</span>
+                <h3 class="principle-title">Proprioception and Balance Training</h3>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>⚖️ Hydraulic Resistance and Controlled Movements</h4>
+                        <p>By providing controlled resistance through hydraulics, the APEP aids in improving proprioception—the body's ability to sense its position and movement in space. This is crucial for recovering patients, especially after foot or ankle injuries.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>🔄 Dynamic Feedback</h4>
+                        <p>The system's adjustable hydraulic resistance allows for controlled instability, which helps the patient practice stabilizing their foot and ankle during movements. This leads to improved balance, strength, and functional mobility.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="principle-section">
+                <span class="principle-number">7</span>
+                <h3 class="principle-title">Progressive Load and Adaptability</h3>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>📈 Progressive Load Application</h4>
+                        <p>One of the strengths of the APEP is its ability to offer gradual progression in terms of load and resistance. As the patient's foot and ankle muscles strengthen, the hydraulic system can be adjusted to increase resistance, creating a progressive rehabilitation protocol.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>🔧 Adaptability for Various Conditions</h4>
+                        <p>The platform is highly adaptable, making it suitable not only for acute rehabilitation (like post-surgery or injury) but also for chronic conditions such as arthritis or long-term foot dysfunction.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="principle-section">
+                <span class="principle-number">8</span>
+                <h3 class="principle-title">Active and Passive Motion</h3>
+                
+                <p>The hydraulic system allows both active and passive range of motion exercises:</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>😌 Passive Motion</h4>
+                        <p>In the early stages of rehabilitation, the hydraulic system can assist in moving the foot and ankle through their range of motion without requiring muscle activation from the patient. This helps prevent joint stiffness and encourages blood circulation without straining injured tissues.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h4>💪 Active Motion</h4>
+                        <p>As the patient progresses, the system can switch to a mode where the patient actively engages their muscles to perform the movements, with the hydraulics providing resistance. This gradual shift from passive to active movement is essential for restoring full strength and mobility.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Continuing with remaining principles -->
+            <div class="principle-section">
+                <span class="principle-number">9</span>
+                <h3 class="principle-title">Electrical Stimulation and Muscle Activation</h3>
+                
+                <p>The Faradic Foot Bath is not just a form of pain relief but also a key to stimulating weakened or atrophied muscles. By applying low-frequency electrical currents, this feature helps reactivate muscle fibers that may have become dormant due to prolonged immobility or nerve damage. This stimulation supports faster recovery and helps the patient regain control over their foot and ankle movements.</p>
+            </div>
+
+            <div class="principle-section">
+                <span class="principle-number">10</span>
+                <h3 class="principle-title">Circulatory and Lymphatic Benefits</h3>
+                
+                <p>The combination of warm water, buoyancy, and electrical stimulation promotes improved circulation and encourages the flow of lymphatic fluid. This is particularly important for reducing swelling and inflammation after injuries or surgeries. Improved blood flow also accelerates the healing of tissues and delivers essential nutrients to damaged areas.</p>
+            </div>
+
+            <div class="principle-section">
+                <span class="principle-number">11</span>
+                <h3 class="principle-title">Neuromuscular Re-education</h3>
+                
+                <p>The APEP offers an advanced platform for neuromuscular re-education, which is crucial for restoring normal movement patterns after injury. By providing carefully controlled movements and resistance, patients can retrain their muscles and nerves to work together more efficiently, improving coordination and reducing compensatory movements that could lead to further injury.</p>
+            </div>
+
+            <div class="principle-section">
+                <span class="principle-number">12</span>
+                <h3 class="principle-title">Psychological Benefits of Water Therapy</h3>
+                
+                <p>Beyond the physical aspects, water therapy has psychological benefits. The soothing properties of warm water and the gentle currents from the water propeller create a calming environment, reducing stress and anxiety often associated with injury recovery. This contributes to a more positive rehabilitation experience, which is crucial for long-term patient compliance and success.</p>
+            </div>
+
+            <div class="principle-section">
+                <span class="principle-number">13</span>
+                <h3 class="principle-title">Versatility for Different Therapies</h3>
+                
+                <p>The APEP is versatile enough to be used not only for rehabilitation but also for preventive care and conditioning. Athletes, for example, can use the platform to enhance joint mobility and muscle strength, potentially reducing the risk of future injuries. Its adaptability allows it to serve multiple purposes across a wide range of patient needs.</p>
+            </div>
+
+            <div class="principle-section">
+                <span class="principle-number">14</span>
+                <h3 class="principle-title">Minimizing Weight-Bearing Load</h3>
+                
+                <p>The buoyancy of water in the hydrotherapy tank reduces the weight-bearing load on the foot and ankle. This is especially beneficial for patients who may not yet be able to support their full body weight on an injured limb. It allows early-stage rehabilitation exercises to begin safely without overloading healing tissues.</p>
+            </div>
+
+            <div class="principle-section">
+                <span class="principle-number">15</span>
+                <h3 class="principle-title">Ergonomic Design and Patient Comfort</h3>
+                
+                <p>The APEP is ergonomically designed for maximum comfort. Features like adjustable foot harnesses and non-slip surfaces ensure that patients remain secure during treatment. This not only improves safety but also increases the patient's confidence in performing exercises, leading to more effective therapy.</p>
+            </div>
+
+            <!-- Innovation Section -->
+            <div class="innovation-section">
+                <h3>🚀 Overall Innovation</h3>
+                <p>The APEP is an innovative physiotherapy tool because it merges different rehabilitation approaches—water-based therapy, hydraulic-assisted movement, and electrical stimulation—into a single, adaptable platform. This multi-faceted approach enhances recovery speed and effectiveness, making it a highly valuable tool for patients recovering from ankle and foot injuries.</p>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="conclusion-box">
+                <h3>Conclusion</h3>
+                <p>The APEP represents a fusion of modern rehabilitation technologies, integrating hydrotherapy, hydraulic-assisted movement, faradic electrical stimulation, and progressive resistance to create a comprehensive, adaptive treatment platform for ankle and foot rehabilitation. Its ability to provide both assistance and resistance, along with the psychological and physiological benefits of water therapy, sets it apart as an advanced tool in physiotherapy. It supports pain relief, muscle activation, neuromuscular re-education, and long-term recovery, making it ideal for diverse patient needs.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Check authentication
+        window.onload = function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                window.location.href = 'register.html';
+                return;
+            }
+            
+            document.getElementById('welcomeMessage').textContent = `Hi, ${currentUser.username}!`;
+        };
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'register.html';
+        }
+
+        function goBack() {
+            window.location.href = 'create.html';
+        }
+    </script>
+</body>
+</html>
